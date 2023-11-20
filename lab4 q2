@@ -1,0 +1,49 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+ struct Newnode{
+ int data;
+struct Newnode*next;
+ };
+ struct Newnode* createNode(int data){
+     struct Newnode *ptr=(struct Newnode*)malloc(1*sizeof(struct Newnode));
+     ptr->data=data;
+     ptr->next=NULL;
+     return ptr;}
+     struct Newnode* insertafter(struct Newnode* head,int data){
+         struct Newnode* ptr=createNode(data);
+         struct Newnode* current= head;
+          while(current->next!=NULL){
+            current=current->next;
+          }
+          current->next= ptr;
+          return head;
+          }
+          struct Newnode* merge(struct Newnode* head1,struct Newnode* head2){
+              head1=insertafter(head1,head2->data);}
+int main(){
+
+    struct Newnode *head1,*head2;
+     head1=createNode(1);
+    head1=insertafter(head1,2);
+    head1=insertafter(head1,3);
+    head2=createNode(4);
+    head2=insertafter(head2,5);
+    head2=insertafter(head2,6);
+
+struct Newnode* current = head2;
+while(current->next!=NULL){
+    head1=merge(head1,current);
+    current=current->next;
+}head1=merge(head1,current);
+current = head1;
+while(current->next!=NULL){
+    printf("%d",current->data);
+    current=current->next;
+}printf("%d",current->data);
+
+ return 0;
+}
+
+
