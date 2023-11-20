@@ -1,0 +1,56 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct address_book{
+char name[15];
+char email[20];
+int phone_no;
+};
+int main(){
+    int n;
+ printf("Enter number of contacts u want to enter:");
+ scanf("%d",&n);
+ struct address_book * ptr = (struct address_book*)malloc(n * sizeof(struct address_book));
+int j=0;
+while(1){
+
+ for(int i=j;i<=n-1;i++){
+    printf("Enter name of person %d",i+1);
+    scanf("%s",ptr[i].name);
+    printf("enter email of person %d",i+1);
+    scanf("%s",ptr[i].email);
+    printf("enter number of person %d",i+1);
+    scanf("%d",&ptr[i].phone_no);
+    j=j+1;
+ }
+ printf("If u want to again enter contacts click y else click any key!");
+ char m;
+ scanf(" %c",&m);
+ if(m=='y'|| m== 'Y'){
+
+        printf("Enter number of contacts:");
+     scanf("%d",&n);
+
+    ptr=realloc(ptr, n * sizeof(struct address_book));
+    n=n+j;
+
+    if (ptr!=NULL){
+        printf("successsfully reallocated");
+    }else{
+    printf("EROORr");}
+    printf("done");
+ }else{
+ break;}
+ }
+ for(int i=0;i<=2;i++){
+ printf(" name of person %d is %s\n",i+1,ptr[i].name);
+ printf("email of person %d is %s\n",i+1,ptr[i].email);
+ printf("phone no of person %d is %d\n",i+1,ptr[i].phone_no);
+
+ }
+
+ return 0;
+}
+
+
