@@ -1,0 +1,55 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+struct newNode{
+    int data;
+    struct newNode* next;
+};
+struct newNode* createnode(int data){
+
+    struct newNode* new;
+    new= (struct newNode*) malloc( sizeof(struct newNode));
+    new->data=data;
+    new->next=NULL;
+    return new;
+};
+
+struct newNode* insert_after(struct newNode* head,int data){
+    struct newNode* ptr=createnode(data);
+    struct newNode* current = head;
+    while(current->next != NULL ){
+
+        current = current->next;
+    }current->next=ptr;
+    return head;
+}
+int arr[10];
+int lls_to_array(struct newNode* head){
+
+    int i=0;
+  struct newNode* ptr=head;
+  while(ptr !=NULL){
+    arr[i]=ptr->data;
+
+      i=i+1;
+    ptr = ptr->next;
+
+  }
+  return 0;
+
+  }
+
+int main(){
+
+    struct newNode* head = createnode(2);
+    head=insert_after(head,3);
+    head = insert_after(head,4);
+    head = insert_after(head,5);
+    head = insert_after(head,6);
+lls_to_array(head);
+for(int i =0; i<=4;i++){
+    printf("%d\n",arr[i] );
+}
+return 0;}
+
+
